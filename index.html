@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="scripts/jspdf.min.js"></script>
+	<script src="scripts/signature_pad.min.js"></script>
+
+    <script src = 'scripts/index.js'> </script>
+
+  	<link rel="stylesheet" type="text/css" href="style/main.css">
+</head>
+<body>
+	<form>
+		<p> First Name </p>
+		<input class="inp" name = "first_name" type="text" id = "first_name">
+		<p>Last Name</p>
+		<input class="inp" name = "last_name" type="text" id = "last_name">
+		<p> Email </p>
+		<input class="inp" name = "Email" type="text" id = "my_email">
+		<p>Month</p>
+		<input class="inp" name = "month" type="text" id = "month">
+		<p>Day</p>
+		<input class="inp" name = "day" type="text" id = "day">
+		<p>Year</p>
+		<input class="inp" name = "year" type="text" id = "year">
+		<p>Address</p>
+		<input class="inp" name = "address_line_1" type="text" id = "address_line_1">
+		<p>City</p>
+		<input class="inp" name = "city" type="text" id = "city">
+		<p>State</p>
+		<input class="inp" name = "state" type="text" id = "state">
+		<p>Zip Code</p>
+		<input class="inp" name = "zip" type="text" id = "zip">
+		<p>Store Name</p>
+		<input class="inp" name = "Store Name" type="text" id = "store_name">
+		<p>Store Email</p>
+		<input class="inp" name = "Store Email" type="text" id = "store_email">
+	</form>
+
+	<p> Signature </p>
+	<canvas id = 'signature_pad'></canvas>
+	<div id = "submit_button"> Submit </div>
+	<p id = "notify" style = "color:red;"></p>
+</body>
+</html>
