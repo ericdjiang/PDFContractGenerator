@@ -10,7 +10,7 @@ $(function() {
 		    map_raw[$(this).attr("name")] = $(this).val();
 		});
 
-		if(datacheck(signaturePad, map)){
+		if(datacheck(signaturePad, map_raw)){
 			// clean up mapping dictionary
 			var map = {}
 			map['Name'] = map_raw['first_name'] + " " + map_raw['last_name'];
