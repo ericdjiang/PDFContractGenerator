@@ -58,6 +58,13 @@ table {
 	color: white;
 }
 
-#submit_button:hover {
+#clear_button{
+	width: 70px;
+	height: 50px;
+	background-color:blue;
+	color:white;
+}
+
+#submit_button:hover, #clear_button:hover {
 	cursor: pointer;
 }

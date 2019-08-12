@@ -3,7 +3,13 @@ $(function() {
 	var canvas = document.querySelector("canvas");
 	var signaturePad = new SignaturePad(canvas);
 
-	$( "#submit_button" ).click(function() {
+	canvas.setAttribute("width", 300);
+	canvas.setAttribute("height", 100);
+	$("#clear_button").click(function(){
+  		signaturePad.clear();
+	});
+
+	$( "#submit_button" ).click(function(){
 		// extract inputs
 		var map_raw = {};
 		$(".inp").each(function() {
@@ -16,7 +22,13 @@ $(function() {
 			map['Name'] = map_raw['first_name'] + " " + map_raw['last_name'];
 			map['Email'] = map_raw['Email'];
 			map['Date of Birth'] = map_raw['month'] + " " + map_raw['day'] + ", " + map_raw['year'];
-			map['Address'] = [map_raw['address_line_1'], map_raw['city'] + ", " + map_raw['state'] + " " + map_raw['zip']];
+
+			if (map_raw['address_line_2'] == "") {
+				map['Address'] = [map_raw['address_line_1'], map_raw['city'] + ", " + map_raw['state'] + " " + map_raw['zip']];
+			} else {
+				map['Address'] = [map_raw['address_line_1'], map_raw['address_line_2'], map_raw['city'] + ", " + map_raw['state'] + " " + map_raw['zip']];
+			}
+
 			map['Store Name'] = map_raw['Store Name'];
 			map['Store Email'] = map_raw['Store Email'];
 
@@ -52,8 +64,8 @@ $(function() {
 				hr_y+=10;	
 				
 				if (Array.isArray(value)) {
-					off_y+=4;
-					hr_y+=4;
+					off_y+=4+(value.length-2)*5;
+					hr_y+=4+(value.length-2)*5;
 				}
 
 				doc.line(hr_x1, hr_y, hr_x2, hr_y);
@@ -100,8 +112,8 @@ $(function() {
 			doc.text(["Signature [Signing signifies your", "agreement to the above contract]"], off_x1, off_y);
 			doc.setFont("Helvetica", "normal");
 			doc.addImage(signature_raw, off_x2, off_y);
-			off_y+=12;
-			hr_y+=30;
+			off_y+=16;
+			hr_y+=34;
 			doc.line(hr_x1, hr_y, hr_x2, hr_y);
 
 			pdf_raw = doc.output('datauristring');
@@ -126,25 +138,24 @@ $(function() {
 
 	// check if all form elements have been filled out
 	function datacheck(signaturePad, map) {
-		// if(Array.from(arguments).includes("")){
-		// 	console.log('Please fill out all required fields.');
-		// 	return false;
-		// }
-		var form_complete = true;
-		$.each(map,function(index,value){ 
-		    if(value == "")	form_complete = false;
-		});
-
-		if(form_complete==false){
-	    	$("#notify").html('Please fill out all fields');
-	    	return false;
-		}
+		// !!! Use bootstrap form validation on everything except address line 2
 
 		if (signaturePad.isEmpty()){
 			$("#notify").html('Please sign the document.');
 			return false;
 		}
 		$("#notify").html("Generating PDF");
+
+		// var form_complete = true;
+		// $.each(map,function(index,value){ 
+		//     if(value == "")	form_complete = false;
+		// });
+
+		// if(form_complete==false){
+	 //    	$("#notify").html('Please fill out all fields');
+	 //    	return false;
+		// }
+
 		return true;
 	}
 });
