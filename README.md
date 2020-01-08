@@ -19,5 +19,5 @@ Contract styling can be changed in /scripts/index.js as per JSPDF documentation.
 ## Examples
 Here are screenshots of a sample PDF contract for a shoe consignment store which was generated using this application.
 ![Inputs from html form](images/p1.jpg)
-![Terms and services](images/p2.jpg)
-![Signature](images/p3.jpg)
+![Terms and services](images/p2.png)
+![Signature](images/p3.png)
