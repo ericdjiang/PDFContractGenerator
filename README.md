@@ -17,5 +17,6 @@ var pages = [page2];
 Contract styling can be changed in /scripts/index.js as per JSPDF documentation.
 
 ## Examples
-Here is a sample PDF generated from the 
+Here is a sample PDF contract for a shoe consignment store which generated using this application.
+
 
